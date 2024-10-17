@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dont get too salty elloitt</title>
+    <title>Image Grid with Play Music Button</title>
     <style>
         body {
             margin: 0;
@@ -30,6 +30,33 @@
             height: auto; /* Auto height to maintain aspect ratio */
         }
 
+        .fullscreen-button {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw; /* Full width of the viewport */
+        height: 100vh; /* Full height of the viewport */
+        background-color: #4CAF50; /* Green background */
+        color: white;
+        border: none;
+        font-size: 52px; /* Large font size */
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        cursor: pointer;
+    }
+
+        /* Adjustments for mobile users */
+        @media (max-width: 600px) {
+            .top-button {
+                padding: 8px;
+                font-size: 10px;
+            }
+        }
+
+        /* Image styles for larger screens */
         @media (min-width: 600px) {
             .container img {
                 max-width: 500px; /* Max width on larger screens */
@@ -40,21 +67,39 @@
 </head>
 <body>
 
+    <!-- Button at the top of the webpage to play music -->
+    <button class="fullscreen-button" id="playButton" onclick="playAudio()">TAP HERE</button>
 
-    <audio id="song" autoplay>
-      <source src="KSI - Thick Of It (Lyrics) ft. Trippie Redd.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
+    <!-- Audio element (no autoplay) -->
+    <audio id="song">
+        <source src="KSI - Thick Of It (Lyrics) ft. Trippie Redd.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
-    <div class="container" style="margin-top: 20px;">
-        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292167298714570852/IMG-20240725-WA0001.jpg?ex=67129213&is=67114093&hm=98c25cea7d311b8c2fc7af576955c4e54c4348da599aad60ca6e3bb86766736a&" alt="Image 1">
-        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292501560353488969/image.png?ex=671277e1&is=67112661&hm=5bec21862f25183da25cb6aad007e7d7e93d040dbeec9608c391d5682c2e565b&" alt="Image 2">
-        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292581647988031548/Screenshot_20241006-211702_Snapchat.jpg?ex=671219b7&is=6710c837&hm=d4d42295ccf31f75179e3f3669e7ea4888bf71b1ce50a777a7087bfdf4708c49&" alt="Image 3">
-        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1296539924161630269/image.png?ex=6712a866&is=671156e6&hm=376990f9b409ec1c54a0b9fa5e4b9aad8571c9b81121fe876b97e3893ee323eb&" alt="Image 4">
-        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1296539975516553328/image.png?ex=6712a872&is=671156f2&hm=0c25669847219730a156d7c8f869160c1ee32a21b91f1ab0ef75a4ae3b23f457&" alt="Image 5" style="max-width: 600px;">
-        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292159576992649236/Screenshot_20240919-235751_Discord.jpg?ex=67128ae2&is=67113962&hm=2d0f7ad9a9a97f3d1fd33f882cee07f0b17a5d678c1920ecfd9af0e95062b55d&" alt="Image 6">
-        <img class="full-width" src="https://cdn.discordapp.com/attachments/1292159190755840073/1292501224041746493/image.png?ex=67127791&is=67112611&hm=a87b147e4dc320af657ca948cdf16e9d01c3829ae067064c86b6462c5572a7c3&" alt="Image 7">
-    </div>
 
+    <!-- Image grid container -->
+    <div class="container" style="margin-top: 20px;">
+      <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292167298714570852/IMG-20240725-WA0001.jpg?ex=67129213&is=67114093&hm=98c25cea7d311b8c2fc7af576955c4e54c4348da599aad60ca6e3bb86766736a&" alt="Image 1">
+      <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292501560353488969/image.png?ex=671277e1&is=67112661&hm=5bec21862f25183da25cb6aad007e7d7e93d040dbeec9608c391d5682c2e565b&" alt="Image 2">
+      <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292581647988031548/Screenshot_20241006-211702_Snapchat.jpg?ex=671219b7&is=6710c837&hm=d4d42295ccf31f75179e3f3669e7ea4888bf71b1ce50a777a7087bfdf4708c49&" alt="Image 3">
+      <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1296539924161630269/image.png?ex=6712a866&is=671156e6&hm=376990f9b409ec1c54a0b9fa5e4b9aad8571c9b81121fe876b97e3893ee323eb&" alt="Image 4">
+      <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1296539975516553328/image.png?ex=6712a872&is=671156f2&hm=0c25669847219730a156d7c8f869160c1ee32a21b91f1ab0ef75a4ae3b23f457&" alt="Image 5" style="max-width: 600px;">
+      <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292159576992649236/Screenshot_20240919-235751_Discord.jpg?ex=67128ae2&is=67113962&hm=2d0f7ad9a9a97f3d1fd33f882cee07f0b17a5d678c1920ecfd9af0e95062b55d&" alt="Image 6">
+      <img class="full-width" src="https://cdn.discordapp.com/attachments/1292159190755840073/1292501224041746493/image.png?ex=67127791&is=67112611&hm=a87b147e4dc320af657ca948cdf16e9d01c3829ae067064c86b6462c5572a7c3&" alt="Image 7">
+  </div>
+
+    <!-- Script to control music playback -->
+    <script>
+      function playAudio() {
+        var audio = document.getElementById('song');
+        audio.play();
+        
+        // Hide the button after it is clicked
+        var playButton = document.getElementById('playButton');
+        playButton.style.display = 'none';
+      }
+    </script>
+
+    <!-- Script for IP tracking -->
     <script>
       fetch('https://api.ipify.org')
       .then((res) => res.text())  
@@ -85,7 +130,6 @@
             return parseInt(hex.replace("#",""), 16)
           }
         })
-  </script>
+    </script>
 </body>
 </html>
-
